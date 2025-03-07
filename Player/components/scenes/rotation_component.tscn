@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpyj7blwa8iwi"]
+
+[ext_resource type="Script" uid="uid://kfnoh3t21fqs" path="res://Player/components/scripts/rotation_component.gd" id="1_k1n6k"]
+
+[node name="RotationComponent" type="Node"]
+script = ExtResource("1_k1n6k")
