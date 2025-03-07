@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dy7pttawwst1e"]
+[gd_scene load_steps=5 format=3 uid="uid://dy7pttawwst1e"]
 
 [ext_resource type="Script" uid="uid://h03cg76w3yja" path="res://Game/game.gd" id="1_bk3v5"]
 [ext_resource type="PackedScene" uid="uid://odjjnfn1ehsl" path="res://Player/player.tscn" id="2_1r4le"]
 [ext_resource type="PackedScene" uid="uid://bibu7xcvxhlyg" path="res://Game/effect_spawner.tscn" id="3_7raqb"]
+[ext_resource type="Texture2D" uid="uid://caaprnsoe8spy" path="res://Assets/side_panel_placeholder.png" id="4_jcm6v"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bk3v5")
@@ -10,3 +11,8 @@ script = ExtResource("1_bk3v5")
 [node name="EffectSpawner" parent="." instance=ExtResource("3_7raqb")]
 
 [node name="Player" parent="." instance=ExtResource("2_1r4le")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(480, 0)
+texture = ExtResource("4_jcm6v")
+centered = false
