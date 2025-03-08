@@ -8,4 +8,5 @@ func _process(delta: float) -> void:
 		_on_Button_pressed()
 
 func _on_Button_pressed():
+	SignalManager.emit_signal("set_score_to_zero")
 	get_tree().change_scene_to_file("res://Game/game.tscn")
