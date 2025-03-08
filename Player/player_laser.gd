@@ -4,8 +4,6 @@ extends Node2D
 @export_subgroup("settings")
 @export var speed: float = 1000.00
 
-var direction = Vector2.ZERO
-
 
 func _process(delta: float) -> void:
 	position += transform.x * speed * delta

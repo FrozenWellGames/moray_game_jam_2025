@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c41lsfncsktrp"]
+
+[ext_resource type="Script" uid="uid://co8hj0n58rfmr" path="res://Asteroids/asteroid_spawner.gd" id="1_c102h"]
+[ext_resource type="PackedScene" uid="uid://65tfep8oxdjt" path="res://Asteroids/asteroid.tscn" id="2_cxtwb"]
+
+[node name="AsteroidSpawner" type="Node2D" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_c102h")
+timer = NodePath("Timer")
+asteroid = ExtResource("2_cxtwb")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
