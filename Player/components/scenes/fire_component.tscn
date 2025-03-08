@@ -9,7 +9,7 @@ projectile = ExtResource("2_o4ajp")
 cooldown_timer = NodePath("CooldownTimer")
 
 [node name="CooldownTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.3
 one_shot = true
 
 [connection signal="timeout" from="CooldownTimer" to="." method="_on_cooldown_timer_timeout"]
