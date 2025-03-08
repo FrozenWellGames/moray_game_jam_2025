@@ -7,9 +7,11 @@ extends Node
 
 
 func handle_player_animation(move_direction: float) -> void:
-	if move_direction < -0.2:
-		animation_player.play("fly_left")
-	elif move_direction > 0.2:
-		animation_player.play("fly_right")
-	else:
-		animation_player.play("fly_level")
+	#if move_direction < -0.2:
+		#animation_player.play("fly_left")
+	#elif move_direction > 0.2:
+		#animation_player.play("fly_right")
+	#else:
+		#animation_player.play("fly_level")
+	animation_player.play("fly_level")
+		

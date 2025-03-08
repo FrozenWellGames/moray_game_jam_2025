@@ -2,7 +2,7 @@ class_name MovementComponent
 extends Node
 
 @export_subgroup("settings")
-@export var speed: float = 1.0
+@export var speed: float = 2.1
 
 var angle = 0.0
 
@@ -12,6 +12,8 @@ func handle_movement(player_body: CharacterBody2D, direction: float, delta: floa
 	
 	angle -= direction * speed * delta
 
-	player_body.position.x = rotation_center.position.x + radius * cos(angle)
-	player_body.position.y = rotation_center.position.y + radius * sin(angle)
-	print((screen_size.x / 100) * 37)
+	var oval_radius_x = radius * 1.3
+	var oval_radius_y = radius * 0.9
+
+	player_body.position.x = rotation_center.position.x + oval_radius_x * cos(angle)
+	player_body.position.y = rotation_center.position.y + oval_radius_y * sin(angle)

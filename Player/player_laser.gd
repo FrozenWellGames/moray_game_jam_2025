@@ -2,7 +2,7 @@ class_name PlayerLaser
 extends Node2D
 
 @export_subgroup("settings")
-@export var speed: float = 600.00
+@export var speed: float = 800.00
 
 var direction = Vector2.ZERO
 
