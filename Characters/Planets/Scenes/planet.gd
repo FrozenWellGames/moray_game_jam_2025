@@ -8,11 +8,16 @@ extends Node2D
 @export var explosion_spawn_point_2: Marker2D
 @export var explosion_spawn_point_3: Marker2D
 @export var player_immune_time: Timer
+@export var explosion_sfx : AudioStream
 
 @export_subgroup("Settings")
 @export var speed: float = 100.00
 
 var group_id: int
+var position_in_group:int
+
+var player_laser_group_id = 0
+var player_laser_position_in_group = 0
 
 
 func _ready() -> void:
@@ -26,11 +31,33 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.get_parent().name == "PlayerLaser":
+	if area.get_parent().name == "PlayerLaser":		
+		if GameManager.player_laser_group_id == 0 and position_in_group == 1:
+			GameManager.player_laser_group_id = group_id
+			GameManager.player_laser_position_in_group  = position_in_group + 1
+			GameManager.multiplier = GameManager.multiplier * 2
+		elif GameManager.player_laser_group_id == group_id and GameManager.player_laser_position_in_group == position_in_group:
+			GameManager.multiplier = GameManager.multiplier * 2
+			GameManager.player_laser_position_in_group  = position_in_group + 1
+		elif GameManager.player_laser_group_id == group_id and GameManager.player_laser_position_in_group != position_in_group:
+			GameManager.multiplier = 1
+			GameManager.player_laser_group_id = 0
+			GameManager.player_laser_position_in_group = 0
+		elif GameManager.player_laser_group_id != group_id and position_in_group == 1:
+			GameManager.multiplier = 2
+			GameManager.player_laser_group_id = group_id
+			GameManager.player_laser_position_in_group = position_in_group + 1
+		else:
+			GameManager.multiplier = 1
+			GameManager.player_laser_group_id = 0
+			GameManager.player_laser_position_in_group = 0
+			
+		
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_1.global_position)
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_2.global_position)
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_3.global_position)
-		SignalManager.emit_signal("add_to_score", 10)
+		SignalManager.emit_signal("add_to_score", 20 * GameManager.multiplier)
+		SignalManager.emit_signal("play_sfx",explosion_sfx)
 		area.get_parent().queue_free()
 		self.queue_free()
 

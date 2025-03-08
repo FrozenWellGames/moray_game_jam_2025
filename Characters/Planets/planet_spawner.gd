@@ -8,14 +8,19 @@ extends Node2D
 
 
 func on_spawn_asteroid( Rotation: float) -> void:
-	for n in 3:
+	var planet_no: int = 1
+	for n in 4:
 		pass
 		var plan: Node2D = planet.instantiate()
 		plan.rotation = Rotation
 		plan.position = rotation_center.global_position
 		plan.group_id = GameManager.current_planet_group_id
+		plan.position_in_group = planet_no
+		planet_no +=1
 		add_child(plan)
 		await get_tree().create_timer(0.75).timeout
+		 
+	SignalManager.emit_signal("update_current_planet_group_id")
 	group_timer.start()
 
 
