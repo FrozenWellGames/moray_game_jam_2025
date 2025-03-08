@@ -27,4 +27,3 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_3.global_position)
 		area.get_parent().queue_free()
 	self.queue_free()
-	pass # Replace with function body.

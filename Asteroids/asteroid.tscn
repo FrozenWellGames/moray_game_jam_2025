@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://65tfep8oxdjt"]
 
 [ext_resource type="Script" uid="uid://c3r8c22yedxfc" path="res://Asteroids/asteroid.gd" id="1_gc8g2"]
-[ext_resource type="Texture2D" uid="uid://bkmlmmulb2ecl" path="res://Asteroids/Assets/asteroid_01.png" id="1_v5rxd"]
 [ext_resource type="PackedScene" uid="uid://bqa5kticls4m0" path="res://Explosion/explosion.tscn" id="2_582lc"]
+[ext_resource type="Texture2D" uid="uid://dpekqx37fnvpl" path="res://Asteroids/Assets/asteroid_02.png" id="3_582lc"]
 
 [sub_resource type="Animation" id="Animation_582lc"]
 length = 0.001
@@ -95,7 +95,7 @@ explosion_spawn_point_3 = NodePath("ExplosionPoint3")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-6, 0)
 scale = Vector2(1e-05, 1e-05)
-texture = ExtResource("1_v5rxd")
+texture = ExtResource("3_582lc")
 hframes = 6
 vframes = 6
 

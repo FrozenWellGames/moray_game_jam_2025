@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="moray_game_jam_2025"
+config/name="Astro Alignment"
 run/main_scene="uid://dy7pttawwst1e"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
@@ -19,6 +19,7 @@ config/warnings/unused_signal=1
 [autoload]
 
 SignalManager="*res://Singletons/signal_manager.gd"
+GameManager="*res://Singletons/game_manager.gd"
 
 [debug]
 
