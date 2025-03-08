@@ -66,7 +66,7 @@ _data = {
 &"fly_level": SubResource("Animation_vtle1")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "rotation_component", "fire_component", "animation_component")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "rotation_component", "fire_component", "animation_component") groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_l8h54")
 input_component = NodePath("InputComponent")
@@ -74,6 +74,9 @@ movement_component = NodePath("MovementComponent")
 rotation_component = NodePath("RotationComponent")
 fire_component = NodePath("FireComponent")
 animation_component = NodePath("AnimationComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bk3v5")
 
 [node name="InputComponent" parent="." instance=ExtResource("2_gwnis")]
 
@@ -87,9 +90,6 @@ bullet_spawn_point = NodePath("../BulletSpawnPoint")
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("player_sprite", "animation_player") instance=ExtResource("7_vtle1")]
 player_sprite = NodePath("../Ship")
 animation_player = NodePath("../AnimationPlayer")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_bk3v5")
 
 [node name="Engines" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_od3ui")

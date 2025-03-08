@@ -83,7 +83,7 @@ _data = {
 &"scale_up": SubResource("Animation_j1quy")
 }
 
-[node name="Asteroid" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer", "explosion_spawn_point_1", "explosion_spawn_point_2", "explosion_spawn_point_3")]
+[node name="Asteroid" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer", "explosion_spawn_point_1", "explosion_spawn_point_2", "explosion_spawn_point_3") groups=["enemy"]]
 script = ExtResource("1_gc8g2")
 animation_player = NodePath("AnimationPlayer")
 scale_changer = NodePath("ScaleChanger")
@@ -104,7 +104,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_582lc")
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 collision_layer = 4
 collision_mask = 3
 
@@ -126,3 +126,4 @@ position = Vector2(14.735, 3.525)
 position = Vector2(-7.61, 10.82)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
