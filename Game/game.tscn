@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy7pttawwst1e"]
+[gd_scene load_steps=7 format=3 uid="uid://dy7pttawwst1e"]
 
 [ext_resource type="Script" uid="uid://h03cg76w3yja" path="res://Game/game.gd" id="1_bk3v5"]
 [ext_resource type="PackedScene" uid="uid://odjjnfn1ehsl" path="res://Player/player.tscn" id="2_1r4le"]
 [ext_resource type="PackedScene" uid="uid://dwf1eoajwirp0" path="res://Game/starfield.tscn" id="2_fwxkx"]
 [ext_resource type="PackedScene" uid="uid://bibu7xcvxhlyg" path="res://Game/bullet_spawner.tscn" id="3_7raqb"]
 [ext_resource type="PackedScene" uid="uid://pv3yek2jmg01" path="res://Planets/Scenes/planet.tscn" id="4_jcm6v"]
+[ext_resource type="PackedScene" uid="uid://d0rxnvif8liqo" path="res://Galaxies/galaxy_centre.tscn" id="6_qmv3x"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bk3v5")
@@ -12,7 +13,9 @@ script = ExtResource("1_bk3v5")
 [node name="Starfield" parent="." instance=ExtResource("2_fwxkx")]
 position = Vector2(640, 480)
 
-[node name="EffectSpawner" parent="." instance=ExtResource("3_7raqb")]
+[node name="BulletSpawner" parent="." instance=ExtResource("3_7raqb")]
+
+[node name="Planet" parent="." instance=ExtResource("4_jcm6v")]
 
 [node name="Player" parent="." node_paths=PackedStringArray("rotation_center") instance=ExtResource("2_1r4le")]
 rotation_center = NodePath("../RotationCenter")
@@ -20,4 +23,5 @@ rotation_center = NodePath("../RotationCenter")
 [node name="RotationCenter" type="Marker2D" parent="."]
 position = Vector2(640, 480)
 
-[node name="Planet" parent="." instance=ExtResource("4_jcm6v")]
+[node name="GalaxyCentre" parent="." instance=ExtResource("6_qmv3x")]
+position = Vector2(640, 480)

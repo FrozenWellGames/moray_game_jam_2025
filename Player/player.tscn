@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://odjjnfn1ehsl"]
+[gd_scene load_steps=12 format=3 uid="uid://odjjnfn1ehsl"]
 
 [ext_resource type="Script" uid="uid://2jp4kl7cpy5r" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://b23n3hqxfi6fi" path="res://Player/components/scenes/input_component.tscn" id="2_gwnis"]
@@ -11,6 +11,22 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bk3v5"]
 
 [sub_resource type="Animation" id="Animation_vtle1"]
+resource_name = "fly_level"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_od3ui"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -25,57 +41,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_00tjw"]
-resource_name = "fly_left"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_x3vf3"]
-resource_name = "fly_level"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_od3ui"]
-resource_name = "fly_right"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3vf3"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00tjw"]
 _data = {
-&"RESET": SubResource("Animation_vtle1"),
-&"fly_left": SubResource("Animation_00tjw"),
-&"fly_level": SubResource("Animation_x3vf3"),
-&"fly_right": SubResource("Animation_od3ui")
+&"RESET": SubResource("Animation_od3ui"),
+&"fly_level": SubResource("Animation_vtle1")
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "rotation_component", "fire_component", "animation_component")]
@@ -111,5 +80,5 @@ position = Vector2(16, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_x3vf3")
+&"": SubResource("AnimationLibrary_00tjw")
 }
