@@ -1,7 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://65tfep8oxdjt"]
+[gd_scene load_steps=11 format=3 uid="uid://65tfep8oxdjt"]
 
 [ext_resource type="Script" uid="uid://c3r8c22yedxfc" path="res://Asteroids/asteroid.gd" id="1_gc8g2"]
 [ext_resource type="Texture2D" uid="uid://bkmlmmulb2ecl" path="res://Asteroids/Assets/asteroid_01.png" id="1_v5rxd"]
+[ext_resource type="PackedScene" uid="uid://bqa5kticls4m0" path="res://Explosion/explosion.tscn" id="2_582lc"]
+
+[sub_resource type="Animation" id="Animation_582lc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_gc8g2"]
 resource_name = "asteroid"
@@ -21,21 +37,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
 }
 
-[sub_resource type="Animation" id="Animation_582lc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_582lc"]
 _data = {
 &"RESET": SubResource("Animation_582lc"),
@@ -44,6 +45,21 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gc8g2"]
 radius = 22.0907
+
+[sub_resource type="Animation" id="Animation_tmjyk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
 
 [sub_resource type="Animation" id="Animation_j1quy"]
 resource_name = "scale_up"
@@ -61,33 +77,23 @@ tracks/0/keys = {
 "values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(2, 2)]
 }
 
-[sub_resource type="Animation" id="Animation_tmjyk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tmjyk"]
 _data = {
 &"RESET": SubResource("Animation_tmjyk"),
 &"scale_up": SubResource("Animation_j1quy")
 }
 
-[node name="Asteroid" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer")]
+[node name="Asteroid" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer", "explosion_spawn_point_1", "explosion_spawn_point_2", "explosion_spawn_point_3")]
 script = ExtResource("1_gc8g2")
 animation_player = NodePath("AnimationPlayer")
 scale_changer = NodePath("ScaleChanger")
+explosion = ExtResource("2_582lc")
+explosion_spawn_point_1 = NodePath("ExplosionPoint1")
+explosion_spawn_point_2 = NodePath("ExplosionPoint2")
+explosion_spawn_point_3 = NodePath("ExplosionPoint3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6, 0)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("1_v5rxd")
 hframes = 6
@@ -109,3 +115,14 @@ shape = SubResource("CircleShape2D_gc8g2")
 libraries = {
 &"": SubResource("AnimationLibrary_tmjyk")
 }
+
+[node name="ExplosionPoint1" type="Marker2D" parent="."]
+position = Vector2(-9.21, -11.28)
+
+[node name="ExplosionPoint2" type="Marker2D" parent="."]
+position = Vector2(14.735, 3.525)
+
+[node name="ExplosionPoint3" type="Marker2D" parent="."]
+position = Vector2(-7.61, 10.82)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

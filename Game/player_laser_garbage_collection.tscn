@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://crfcy6ftxofcw"]
+
+[ext_resource type="Script" uid="uid://sbouw2u4u74w" path="res://Game/player_laser_garbage_collection.gd" id="1_pqs7p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_buohc"]
+radius = 38.2099
+
+[node name="PlayerLaserGarbageCollection" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_pqs7p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_buohc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -15,4 +15,4 @@ func _process(delta: float) -> void:
 	movement_component.handle_movement(self, input_component.input_horizontal, delta, rotation_center)
 	rotation_component.handle_rotation(self, rotation_center)
 	fire_component.handle_fire(self, input_component.get_fire_input_just_pressed())
-	animation_component.handle_player_animation(input_component.input_horizontal)
+	animation_component.handle_player_animation()

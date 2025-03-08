@@ -6,7 +6,7 @@ extends Node
 @export var animation_player: AnimationPlayer
 
 
-func handle_player_animation(move_direction: float) -> void:
+func handle_player_animation() -> void:
 	#if move_direction < -0.2:
 		#animation_player.play("fly_left")
 	#elif move_direction > 0.2:
