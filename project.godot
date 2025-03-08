@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Astro Alignment"
+config/name="moray_game_jam_2025"
 run/main_scene="uid://dy7pttawwst1e"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+config/warnings/unused_signal=1
 
 [autoload]
 
