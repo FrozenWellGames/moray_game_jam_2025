@@ -7,4 +7,4 @@ extends Control
 
 func _process(_delta: float) -> void:
 	score_label.text = str(GameManager.score)
-	high_label.text = str(GameManager.multiplier)
+	high_label.text = str(GameManager.high_score)
