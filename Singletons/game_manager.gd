@@ -21,6 +21,7 @@ func reset_score() -> void:
 
 func update_player_health(value: int) -> void:
 	player_health -= value
+	
 
 func reset_player_health() -> void:
 	player_health = 5

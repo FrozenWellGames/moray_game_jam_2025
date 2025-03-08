@@ -16,3 +16,5 @@ func _process(delta: float) -> void:
 	rotation_component.handle_rotation(self, rotation_center)
 	fire_component.handle_fire(self, input_component.get_fire_input_just_pressed())
 	animation_component.handle_player_animation()
+	if GameManager.player_health <= 0:
+		get_tree().change_scene_to_file("res://Game Over/game_over.tscn")
