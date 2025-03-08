@@ -10,9 +10,14 @@ script = ExtResource("1_bk3v5")
 
 [node name="EffectSpawner" parent="." instance=ExtResource("3_7raqb")]
 
-[node name="Player" parent="." instance=ExtResource("2_1r4le")]
+[node name="Player" parent="." node_paths=PackedStringArray("rotation_center") instance=ExtResource("2_1r4le")]
+rotation_center = NodePath("../RotationCenter")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(480, 0)
+position = Vector2(960, 0)
+scale = Vector2(2, 2)
 texture = ExtResource("4_jcm6v")
 centered = false
+
+[node name="RotationCenter" type="Marker2D" parent="."]
+position = Vector2(480, 480)
