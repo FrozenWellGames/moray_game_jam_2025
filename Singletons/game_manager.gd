@@ -4,6 +4,7 @@ extends Node
 var score: int = 20
 var high_score : int = 0
 var player_health : int = 5
+var current_planet_group_id : int = 1
 
 
 func _ready() -> void:
@@ -21,7 +22,13 @@ func reset_score() -> void:
 
 func update_player_health(value: int) -> void:
 	player_health -= value
-	
+
 
 func reset_player_health() -> void:
 	player_health = 5
+
+func update_current_planet_id() -> void:
+	current_planet_group_id += 1
+
+func reset_current_planet_id() -> void:
+	current_planet_group_id = 1

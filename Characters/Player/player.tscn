@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://odjjnfn1ehsl"]
+
+[ext_resource type="Script" uid="uid://2jp4kl7cpy5r" path="res://Characters/Player/player.gd" id="1_l8h54"]
+[ext_resource type="PackedScene" uid="uid://b23n3hqxfi6fi" path="res://Characters/Player/components/scenes/input_component.tscn" id="2_gwnis"]
+[ext_resource type="PackedScene" uid="uid://d18cwnoi5vvt7" path="res://Characters/Player/components/scenes/movement_component.tscn" id="3_k53q1"]
+[ext_resource type="PackedScene" uid="uid://bqqkeqs5eyox2" path="res://Characters/Player/components/scenes/fire_component.tscn" id="5_fhl08"]
+[ext_resource type="PackedScene" uid="uid://bpyj7blwa8iwi" path="res://Characters/Player/components/scenes/rotation_component.tscn" id="5_k53q1"]
+[ext_resource type="Texture2D" uid="uid://cfyp4c6wkxpnp" path="res://Characters/Player/Assets/player_engine_sheet.png" id="7_00tjw"]
+[ext_resource type="Texture2D" uid="uid://brk62xs487amp" path="res://Characters/Player/Assets/player.png" id="7_od3ui"]
+[ext_resource type="PackedScene" uid="uid://b08w165ei7b44" path="res://Characters/Player/components/animation_component.tscn" id="7_vtle1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bk3v5"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_od3ui"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_od3ui"]
+length = 0.001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vtle1"]
+resource_name = "fly_level"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Engines:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00tjw"]
+_data = {
+&"RESET": SubResource("Animation_od3ui"),
+&"fly_level": SubResource("Animation_vtle1")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "rotation_component", "fire_component", "animation_component") groups=["player"]]
+collision_mask = 4
+script = ExtResource("1_l8h54")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+rotation_component = NodePath("RotationComponent")
+fire_component = NodePath("FireComponent")
+animation_component = NodePath("AnimationComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bk3v5")
+
+[node name="InputComponent" parent="." instance=ExtResource("2_gwnis")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("3_k53q1")]
+
+[node name="RotationComponent" parent="." instance=ExtResource("5_k53q1")]
+
+[node name="FireComponent" parent="." node_paths=PackedStringArray("bullet_spawn_point") instance=ExtResource("5_fhl08")]
+bullet_spawn_point = NodePath("../BulletSpawnPoint")
+
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("player_sprite", "animation_player") instance=ExtResource("7_vtle1")]
+player_sprite = NodePath("../Ship")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="Engines" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_od3ui")
+position = Vector2(-37, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("7_00tjw")
+hframes = 4
+frame = 2
+
+[node name="Ship" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("7_od3ui")
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_00tjw")
+}

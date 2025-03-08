@@ -1,0 +1,108 @@
+[gd_scene load_steps=15 format=3 uid="uid://dy7pttawwst1e"]
+
+[ext_resource type="Script" uid="uid://h03cg76w3yja" path="res://Main Scenes/Game/game.gd" id="1_bk3v5"]
+[ext_resource type="PackedScene" uid="uid://odjjnfn1ehsl" path="res://Characters/Player/player.tscn" id="2_1r4le"]
+[ext_resource type="PackedScene" uid="uid://dwf1eoajwirp0" path="res://Main Scenes/Game/starfield.tscn" id="2_fwxkx"]
+[ext_resource type="PackedScene" uid="uid://bibu7xcvxhlyg" path="res://Main Scenes/Game/bullet_spawner.tscn" id="3_7raqb"]
+[ext_resource type="PackedScene" uid="uid://pv3yek2jmg01" path="res://Characters/Planets/Scenes/planet.tscn" id="4_jcm6v"]
+[ext_resource type="PackedScene" uid="uid://d0rxnvif8liqo" path="res://Galaxies/galaxy_centre.tscn" id="6_qmv3x"]
+[ext_resource type="PackedScene" uid="uid://xsqgkr3h3801" path="res://Characters/Planets/planet_spawner.tscn" id="6_yvdpg"]
+[ext_resource type="FontFile" uid="uid://cwkhsdu4asbxb" path="res://Fonts/GravityBold8.ttf" id="7_oomkl"]
+[ext_resource type="PackedScene" uid="uid://c41lsfncsktrp" path="res://Characters/Asteroids/asteroid_spawner.tscn" id="8_buohc"]
+[ext_resource type="Script" uid="uid://dp2dbdaupvu8e" path="res://Main Scenes/Game/game_header.gd" id="8_fsxsm"]
+[ext_resource type="PackedScene" uid="uid://crfcy6ftxofcw" path="res://Main Scenes/Game/player_laser_garbage_collection.tscn" id="9_kul4i"]
+[ext_resource type="PackedScene" uid="uid://crc2qykhc8105" path="res://Main Scenes/Game/effect_spawner.tscn" id="10_7gi1t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_buohc"]
+font = ExtResource("7_oomkl")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_kul4i"]
+font = ExtResource("7_oomkl")
+font_size = 32
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_bk3v5")
+
+[node name="Starfield" parent="." instance=ExtResource("2_fwxkx")]
+position = Vector2(640, 480)
+
+[node name="BulletSpawner" parent="." instance=ExtResource("3_7raqb")]
+
+[node name="Planet" parent="." instance=ExtResource("4_jcm6v")]
+
+[node name="AsteroidSpawner" parent="." node_paths=PackedStringArray("rotation_center") instance=ExtResource("8_buohc")]
+rotation_center = NodePath("../RotationCenter")
+
+[node name="PlanetSpawner" parent="." node_paths=PackedStringArray("rotation_center") instance=ExtResource("6_yvdpg")]
+rotation_center = NodePath("../RotationCenter")
+
+[node name="Player" parent="." node_paths=PackedStringArray("rotation_center") instance=ExtResource("2_1r4le")]
+rotation_center = NodePath("../RotationCenter")
+
+[node name="RotationCenter" type="Marker2D" parent="."]
+position = Vector2(640, 480)
+
+[node name="GalaxyCentre" parent="." instance=ExtResource("6_qmv3x")]
+position = Vector2(640, 480)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameHeader" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("score_label", "high_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("8_fsxsm")
+score_label = NodePath("HBoxContainer/Control/ScoreLabel")
+high_label = NodePath("HBoxContainer/Control2/HighScoreLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameHeader"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.025
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/GameHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/GameHeader/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE: 1230"
+label_settings = SubResource("LabelSettings_buohc")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="CanvasLayer/GameHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer/GameHeader/HBoxContainer/Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HIGH SCORE: 6520"
+label_settings = SubResource("LabelSettings_kul4i")
+horizontal_alignment = 1
+
+[node name="PlayerLaserGarbageCollection" parent="." instance=ExtResource("9_kul4i")]
+position = Vector2(640, 480)
+
+[node name="EffectSpawner" parent="." instance=ExtResource("10_7gi1t")]
