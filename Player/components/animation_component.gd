@@ -1,4 +1,4 @@
-class_name AnimationComponent
+class_name PlayerAnimationComponent
 extends Node
 
 @export_subgroup("nodes")
@@ -7,11 +7,4 @@ extends Node
 
 
 func handle_player_animation() -> void:
-	#if move_direction < -0.2:
-		#animation_player.play("fly_left")
-	#elif move_direction > 0.2:
-		#animation_player.play("fly_right")
-	#else:
-		#animation_player.play("fly_level")
 	animation_player.play("fly_level")
-		

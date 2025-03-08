@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var movement_component: MovementComponent
 @export var rotation_component: RotationComponent
 @export var fire_component: FireComponent
-@export var animation_component: AnimationComponent
+@export var animation_component: PlayerAnimationComponent
 @export var rotation_center: Marker2D
 
 var angle = 0.0

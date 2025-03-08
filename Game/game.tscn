@@ -13,9 +13,11 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_buohc"]
 font = ExtResource("7_oomkl")
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_kul4i"]
 font = ExtResource("7_oomkl")
+font_size = 32
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_bk3v5")
@@ -72,7 +74,7 @@ anchor_bottom = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "TEST"
+text = "SCORE: 1230"
 label_settings = SubResource("LabelSettings_buohc")
 horizontal_alignment = 1
 
@@ -88,7 +90,7 @@ anchor_bottom = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "TEST 2"
+text = "HIGH SCORE: 6520"
 label_settings = SubResource("LabelSettings_kul4i")
 horizontal_alignment = 1
 
