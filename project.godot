@@ -20,6 +20,7 @@ config/warnings/unused_signal=1
 
 SignalManager="*res://Singletons/signal_manager.gd"
 GameManager="*res://Singletons/game_manager.gd"
+SfxPlayer="*res://Singletons/SFXPlayer.tscn"
 
 [debug]
 

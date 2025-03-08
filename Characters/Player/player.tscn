@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://odjjnfn1ehsl"]
+[gd_scene load_steps=15 format=3 uid="uid://odjjnfn1ehsl"]
 
 [ext_resource type="Script" uid="uid://2jp4kl7cpy5r" path="res://Characters/Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://b23n3hqxfi6fi" path="res://Characters/Player/components/scenes/input_component.tscn" id="2_gwnis"]
 [ext_resource type="PackedScene" uid="uid://d18cwnoi5vvt7" path="res://Characters/Player/components/scenes/movement_component.tscn" id="3_k53q1"]
 [ext_resource type="PackedScene" uid="uid://bqqkeqs5eyox2" path="res://Characters/Player/components/scenes/fire_component.tscn" id="5_fhl08"]
 [ext_resource type="PackedScene" uid="uid://bpyj7blwa8iwi" path="res://Characters/Player/components/scenes/rotation_component.tscn" id="5_k53q1"]
+[ext_resource type="AudioStream" uid="uid://bvtsex48jq2ef" path="res://SFX/player_laser.mp3" id="6_r5ew0"]
 [ext_resource type="Texture2D" uid="uid://cfyp4c6wkxpnp" path="res://Characters/Player/Assets/player_engine_sheet.png" id="7_00tjw"]
 [ext_resource type="Texture2D" uid="uid://brk62xs487amp" path="res://Characters/Player/Assets/player.png" id="7_od3ui"]
 [ext_resource type="PackedScene" uid="uid://b08w165ei7b44" path="res://Characters/Player/components/animation_component.tscn" id="7_vtle1"]
@@ -86,6 +87,7 @@ shape = SubResource("RectangleShape2D_bk3v5")
 
 [node name="FireComponent" parent="." node_paths=PackedStringArray("bullet_spawn_point") instance=ExtResource("5_fhl08")]
 bullet_spawn_point = NodePath("../BulletSpawnPoint")
+player_laser_sfx = ExtResource("6_r5ew0")
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("player_sprite", "animation_player") instance=ExtResource("7_vtle1")]
 player_sprite = NodePath("../Ship")

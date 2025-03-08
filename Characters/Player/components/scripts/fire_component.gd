@@ -5,7 +5,7 @@ extends Node
 @export var projectile: PackedScene
 @export var cooldown_timer: Timer
 @export var bullet_spawn_point: Marker2D
-
+@export var player_laser_sfx : AudioStream
 var is_firing: bool = false
 
 
@@ -14,7 +14,7 @@ func handle_fire(body: CharacterBody2D, want_to_fire: bool) -> void:
 		is_firing = true
 		cooldown_timer.start()
 		SignalManager.emit_signal("spawn_bullet", projectile, bullet_spawn_point.global_position, body.rotation)
-
+		SignalManager.emit_signal("play_sfx", player_laser_sfx)
 
 func _on_cooldown_timer_timeout() -> void:
 	is_firing = false

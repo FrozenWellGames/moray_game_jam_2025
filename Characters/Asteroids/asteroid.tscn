@@ -83,7 +83,7 @@ _data = {
 &"scale_up": SubResource("Animation_j1quy")
 }
 
-[node name="Asteroid" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer", "explosion_spawn_point_1", "explosion_spawn_point_2", "explosion_spawn_point_3") groups=["enemy"]]
+[node name="Asteroid" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer", "explosion_spawn_point_1", "explosion_spawn_point_2", "explosion_spawn_point_3", "player_immune_time") groups=["enemy"]]
 script = ExtResource("1_gc8g2")
 animation_player = NodePath("AnimationPlayer")
 scale_changer = NodePath("ScaleChanger")
@@ -91,6 +91,7 @@ explosion = ExtResource("2_582lc")
 explosion_spawn_point_1 = NodePath("ExplosionPoint1")
 explosion_spawn_point_2 = NodePath("ExplosionPoint2")
 explosion_spawn_point_3 = NodePath("ExplosionPoint3")
+player_immune_time = NodePath("Timer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-6, 0)
@@ -125,5 +126,9 @@ position = Vector2(14.735, 3.525)
 [node name="ExplosionPoint3" type="Marker2D" parent="."]
 position = Vector2(-7.61, 10.82)
 
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

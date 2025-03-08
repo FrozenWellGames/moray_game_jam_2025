@@ -5,12 +5,13 @@ var score: int = 20
 var high_score : int = 0
 var player_health : int = 5
 var current_planet_group_id : int = 1
+var player_can_take_damage: bool = true
 
 
 func _ready() -> void:
+	player_can_take_damage = true
 	SignalManager.add_to_score.connect(update_score)
 	SignalManager.set_score_to_zero.connect(reset_score)
-	
 	SignalManager.deduct_from_player_health.connect(update_player_health)
 	SignalManager.reset_player_health.connect(reset_player_health)
 
