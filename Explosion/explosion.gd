@@ -5,7 +5,6 @@ extends Node2D
 
 
 func _ready() -> void:
-	#animation_player.stop()
 	animation_player.play("explosion")
 
 
