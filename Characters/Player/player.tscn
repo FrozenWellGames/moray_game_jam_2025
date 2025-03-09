@@ -68,7 +68,7 @@ _data = {
 &"fly_level": SubResource("Animation_vtle1")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "rotation_component", "fire_component", "animation_component") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "rotation_component", "fire_component", "animation_component", "player_sprite") groups=["player"]]
 collision_mask = 4
 script = ExtResource("1_l8h54")
 input_component = NodePath("InputComponent")
@@ -76,6 +76,7 @@ movement_component = NodePath("MovementComponent")
 rotation_component = NodePath("RotationComponent")
 fire_component = NodePath("FireComponent")
 animation_component = NodePath("AnimationComponent")
+player_sprite = NodePath("Ship")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bk3v5")

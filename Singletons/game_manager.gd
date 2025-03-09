@@ -2,22 +2,16 @@ extends Node
 
 
 var score: int = 20
-var high_score : int = 0
-var player_health : int = 5
+var high_score: int = 0
+var player_health: int = 5
 var player_can_take_damage: bool = true
 
-var current_planet_group_id : int = 1
+var current_planet_group_id: int = 1
 
 
 var player_laser_group_id = 0
 var player_laser_position_in_group = 0
 var multiplier = 1
-
-
-
-
-
-
 
 
 func _ready() -> void:

@@ -8,7 +8,16 @@ extends CharacterBody2D
 @export var animation_component: PlayerAnimationComponent
 @export var rotation_center: Marker2D
 
+@export var player_sprite: Sprite2D
+
 var angle = 0.0
+
+
+var hit_flash_material = preload("res://Characters/hit_flash_component.tres")
+
+
+func _ready() -> void:
+	(player_sprite.material as ShaderMaterial).set_shader_parameter("lerp_percent", 0.0)
 
 
 func _process(delta: float) -> void:

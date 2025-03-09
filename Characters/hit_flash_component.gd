@@ -3,10 +3,9 @@ extends Node
 @export var sprite: Sprite2D
 
 var hit_flash_material = preload("res://Characters/hit_flash_component.tres")
-var hit_flash_tween : Tween
+var hit_flash_tween: Tween
 
 func _ready() -> void:
-	
 	SignalManager.deduct_from_player_health.connect(on_player_hit)
 	sprite.material = hit_flash_material
 

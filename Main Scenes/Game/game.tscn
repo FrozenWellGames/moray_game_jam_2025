@@ -25,7 +25,7 @@ script = ExtResource("1_bk3v5")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="GameHeader" type="Control" parent="UILayer" node_paths=PackedStringArray("score_label", "high_label")]
+[node name="GameHeader" type="Control" parent="UILayer" node_paths=PackedStringArray("score_label", "lives_label", "high_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,6 +36,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("8_fsxsm")
 score_label = NodePath("HBoxContainer/Score/ScoreLabel")
+lives_label = NodePath("HBoxContainer/health/LivesLabel")
 high_label = NodePath("HBoxContainer/HighScore/HighScoreLabel")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UILayer/GameHeader"]
@@ -60,6 +61,22 @@ offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "SCORE: 1230"
+label_settings = SubResource("LabelSettings_buohc")
+horizontal_alignment = 1
+
+[node name="health" type="Control" parent="UILayer/GameHeader/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LivesLabel" type="Label" parent="UILayer/GameHeader/HBoxContainer/health"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lives: 5"
 label_settings = SubResource("LabelSettings_buohc")
 horizontal_alignment = 1
 
