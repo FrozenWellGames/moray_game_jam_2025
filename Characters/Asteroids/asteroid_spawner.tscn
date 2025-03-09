@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c41lsfncsktrp"]
+[gd_scene load_steps=3 format=3 uid="uid://bc8sxwp52j5ow"]
 
-[ext_resource type="Script" uid="uid://co8hj0n58rfmr" path="res://Characters/Asteroids/asteroid_spawner.gd" id="1_c102h"]
+[ext_resource type="Script" uid="uid://csbvopclrd2oq" path="res://Characters/UFO/ufo_spawner.gd" id="1_e0d7l"]
 [ext_resource type="PackedScene" uid="uid://65tfep8oxdjt" path="res://Characters/Asteroids/asteroid.tscn" id="2_cxtwb"]
 
 [node name="AsteroidSpawner" type="Node2D" node_paths=PackedStringArray("timer")]
-script = ExtResource("1_c102h")
+script = ExtResource("1_e0d7l")
 timer = NodePath("Timer")
 asteroid = ExtResource("2_cxtwb")
 

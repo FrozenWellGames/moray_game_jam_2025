@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dy7pttawwst1e"]
+[gd_scene load_steps=15 format=3 uid="uid://dy7pttawwst1e"]
 
 [ext_resource type="Script" uid="uid://h03cg76w3yja" path="res://Main Scenes/Game/game.gd" id="1_bk3v5"]
 [ext_resource type="PackedScene" uid="uid://odjjnfn1ehsl" path="res://Characters/Player/player.tscn" id="2_1r4le"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://d0rxnvif8liqo" path="res://Galaxies/galaxy_centre.tscn" id="6_qmv3x"]
 [ext_resource type="PackedScene" uid="uid://xsqgkr3h3801" path="res://Characters/Planets/planet_spawner.tscn" id="6_yvdpg"]
 [ext_resource type="FontFile" uid="uid://cwkhsdu4asbxb" path="res://Fonts/GravityBold8.ttf" id="7_oomkl"]
-[ext_resource type="PackedScene" uid="uid://c41lsfncsktrp" path="res://Characters/Asteroids/asteroid_spawner.tscn" id="8_buohc"]
+[ext_resource type="PackedScene" uid="uid://c41lsfncsktrp" path="res://Characters/UFO/ufo_spawner.tscn" id="8_buohc"]
 [ext_resource type="Script" uid="uid://dp2dbdaupvu8e" path="res://Main Scenes/Game/game_header.gd" id="8_fsxsm"]
 [ext_resource type="PackedScene" uid="uid://crfcy6ftxofcw" path="res://Main Scenes/Game/player_laser_garbage_collection.tscn" id="9_kul4i"]
+[ext_resource type="PackedScene" uid="uid://bc8sxwp52j5ow" path="res://Characters/Asteroids/asteroid_spawner.tscn" id="9_yvdpg"]
 [ext_resource type="PackedScene" uid="uid://crc2qykhc8105" path="res://Main Scenes/Game/effect_spawner.tscn" id="10_7gi1t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_buohc"]
@@ -110,10 +111,13 @@ position = Vector2(640, 480)
 
 [node name="Spawners" type="Node2D" parent="."]
 
-[node name="AsteroidSpawner" parent="Spawners" node_paths=PackedStringArray("rotation_center") instance=ExtResource("8_buohc")]
+[node name="PlanetSpawner" parent="Spawners" node_paths=PackedStringArray("rotation_center") instance=ExtResource("6_yvdpg")]
 rotation_center = NodePath("../../RotationCenter")
 
-[node name="PlanetSpawner" parent="Spawners" node_paths=PackedStringArray("rotation_center") instance=ExtResource("6_yvdpg")]
+[node name="UFOSpawner" parent="Spawners" node_paths=PackedStringArray("rotation_center") instance=ExtResource("8_buohc")]
+rotation_center = NodePath("../../RotationCenter")
+
+[node name="AsteroidSpawner" parent="Spawners" node_paths=PackedStringArray("rotation_center") instance=ExtResource("9_yvdpg")]
 rotation_center = NodePath("../../RotationCenter")
 
 [node name="BulletSpawner" parent="." instance=ExtResource("3_7raqb")]

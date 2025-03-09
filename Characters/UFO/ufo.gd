@@ -15,39 +15,33 @@ extends Node2D
 @export var speed: float = 150.00
 
 
-
-var angle: float = 0.0  # Current angle in radians
-var radius: float = 0.0  # Current radius from the center
-var angular_speed: float = 1.0  # Speed of angle change (radians per second)
-var radial_speed: float = 50.0  # Speed of radius increase (pixels per second)
-var center: Vector2  # Center of the screen
+var angle: float = 0.0 # Current angle in radians
+var radius: float = 0.0 # Current radius from the center
+var angular_speed: float = 1.0 # Speed of angle change (radians per second)
+var radial_speed: float = 50.0 # Speed of radius increase (pixels per second)
+var center: Vector2 # Center of the screen
 
 func _ready() -> void:
 	animation_player.play("asteroid")
 	scale_changer.play("scale_up")
 
 
+	# Set the center of the screen
+	center = get_viewport_rect().size / 2
+	position = center # Start at the center
 
+func _process(delta):
+	# Update the angle and radius
+	angle += angular_speed * delta
+	radius += radial_speed * delta
 
-	## Set the center of the screen
-	#center = get_viewport_rect().size / 2
-	#position = center  # Start at the center
-#
-#func _process(delta):
-	## Update the angle and radius
-	#angle += angular_speed * delta
-	#radius += radial_speed * delta
-#
-	## Calculate the new position using polar coordinates
-	#var offset = Vector2(cos(angle), sin(angle)) * radius
-	#position = center + offset
-#
-	## Check if the enemy has left the viewport
-	#if not get_viewport_rect().has_point(position):
-		#queue_free()  # Remove the enemy when it leaves the viewport
+	# Calculate the new position using polar coordinates
+	var offset = Vector2(cos(angle), sin(angle)) * radius
+	position = center + offset
 
-func _process(delta: float) -> void:
-	position += transform.x * speed * delta
+	# Check if the enemy has left the viewport
+	if not get_viewport_rect().has_point(position):
+		queue_free() # Remove the enemy when it leaves the viewport
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
