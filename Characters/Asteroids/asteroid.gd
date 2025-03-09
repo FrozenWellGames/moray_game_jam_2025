@@ -30,7 +30,8 @@ func _process(delta: float) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.get_parent().name == "PlayerLaser":
+	if area.is_in_group("player_laser"):
+		#if area.get_parent().name == "PlayerLaser":
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_1.global_position)
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_2.global_position)
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_3.global_position)

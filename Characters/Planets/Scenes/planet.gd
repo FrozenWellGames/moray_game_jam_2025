@@ -39,7 +39,8 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.get_parent().name == "PlayerLaser":
+	#if area.get_parent().name == "PlayerLaser":
+	if area.is_in_group("player_laser"):
 		if GameManager.player_laser_group_id == 0 and position_in_group == 1:
 			GameManager.player_laser_group_id = group_id
 			GameManager.player_laser_position_in_group = position_in_group + 1
