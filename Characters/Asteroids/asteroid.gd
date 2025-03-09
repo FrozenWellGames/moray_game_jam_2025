@@ -26,26 +26,6 @@ func _ready() -> void:
 	animation_player.play("asteroid")
 	scale_changer.play("scale_up")
 
-
-
-
-	## Set the center of the screen
-	#center = get_viewport_rect().size / 2
-	#position = center  # Start at the center
-#
-#func _process(delta):
-	## Update the angle and radius
-	#angle += angular_speed * delta
-	#radius += radial_speed * delta
-#
-	## Calculate the new position using polar coordinates
-	#var offset = Vector2(cos(angle), sin(angle)) * radius
-	#position = center + offset
-#
-	## Check if the enemy has left the viewport
-	#if not get_viewport_rect().has_point(position):
-		#queue_free()  # Remove the enemy when it leaves the viewport
-
 func _process(delta: float) -> void:
 	position += transform.x * speed * delta
 
@@ -65,11 +45,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and GameManager.player_can_take_damage:
 		GameManager.player_can_take_damage = false
 		SignalManager.emit_signal("deduct_from_player_health", 1)
-		GameManager.player_can_take_damage = false
 		SignalManager.emit_signal("play_sfx", player_hit_sfx)
-		#player_immune_time.start()
 		await get_tree().create_timer(0.6).timeout
 		GameManager.player_can_take_damage = true
+		player_immune_time.start()
 
 
 func _on_timer_timeout() -> void:

@@ -13,4 +13,5 @@ func _on_Button_pressed():
 	SignalManager.emit_signal("reset_player_health")
 	SignalManager.emit_signal("set_score_to_zero")
 	SignalManager.emit_signal("reset_current_planet_group_id")
+	GameManager.player_can_take_damage = true
 	get_tree().change_scene_to_file("res://Main Scenes/Game/game.tscn")

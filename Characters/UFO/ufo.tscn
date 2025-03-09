@@ -139,7 +139,7 @@ position = Vector2(14.735, 3.525)
 position = Vector2(-7.61, 10.82)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="MusicTimer" type="Timer" parent="."]
