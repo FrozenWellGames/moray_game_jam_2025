@@ -1,6 +1,9 @@
 extends Node
 
 
+@export_subgroup("Nodes")
+@export var reactivate_player_damage_timer: Timer
+
 var score: int = 20
 var high_score: int = 0
 var player_health: int = 5
@@ -24,6 +27,7 @@ func _ready() -> void:
 	SignalManager.reset_player_health.connect(reset_player_health)
 	SignalManager.update_current_planet_group_id.connect(update_current_planet_id)
 	SignalManager.reset_current_planet_group_id.connect(reset_current_planet_id)
+	SignalManager.reactivate_player_can_take_damage.connect(activate_player_can_take_damage)
 
 func update_score(value: int) -> void:
 	score += value
@@ -43,3 +47,12 @@ func update_current_planet_id() -> void:
 
 func reset_current_planet_id() -> void:
 	current_planet_group_id = 1
+
+
+func activate_player_can_take_damage() -> void:
+	reactivate_player_damage_timer.start()
+
+
+func _on_timer_timeout() -> void:
+	print("HELLO")
+	player_can_take_damage = true
