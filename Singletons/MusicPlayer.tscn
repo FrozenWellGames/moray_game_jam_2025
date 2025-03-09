@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqleh1kp764aj"]
+
+[ext_resource type="Script" uid="uid://dl8xqj0h2llin" path="res://Singletons/music_player.gd" id="1_mytli"]
+[ext_resource type="AudioStream" uid="uid://b0w6ooga066vj" path="res://Music/background_music.wav" id="2_04t7v"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+volume_db = -19.403
+script = ExtResource("1_mytli")
+background_music = ExtResource("2_04t7v")
