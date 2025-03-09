@@ -62,9 +62,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		GameManager.player_can_take_damage = false
 		SignalManager.emit_signal("deduct_from_player_health", 1)
 		SignalManager.emit_signal("play_sfx", player_hit_sfx)
-		await get_tree().create_timer(0.6).timeout
-		GameManager.player_can_take_damage = true
-		player_immune_time.start()
+		SignalManager.emit_signal("reactivate_player_can_take_damage")
+		#await get_tree().create_timer(0.6).timeout
+		#GameManager.player_can_take_damage = true
+		#player_immune_time.start()
 
 
 func _on_timer_timeout() -> void:

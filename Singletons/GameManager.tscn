@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://h6h72x8gc3g6"]
+
+[ext_resource type="Script" uid="uid://lb6skyoafjlr" path="res://Singletons/game_manager.gd" id="1_yk48e"]
+
+[node name="GameManager" type="Node" node_paths=PackedStringArray("reactivate_player_damage_timer")]
+script = ExtResource("1_yk48e")
+reactivate_player_damage_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
