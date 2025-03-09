@@ -13,6 +13,8 @@ var player_laser_group_id = 0
 var player_laser_position_in_group = 0
 var multiplier = 1
 
+var player: CharacterBody2D
+
 
 func _ready() -> void:
 	player_can_take_damage = true

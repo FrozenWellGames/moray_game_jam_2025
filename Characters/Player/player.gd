@@ -17,6 +17,7 @@ var hit_flash_material = preload("res://Characters/hit_flash_component.tres")
 
 
 func _ready() -> void:
+	GameManager.player = self
 	(player_sprite.material as ShaderMaterial).set_shader_parameter("lerp_percent", 0.0)
 
 

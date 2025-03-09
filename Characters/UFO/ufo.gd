@@ -10,6 +10,8 @@ extends Node2D
 @export var player_immune_time: Timer
 @export var explosion_sfx: AudioStream
 @export var player_hit_sfx: AudioStream
+@export var ufo_sfx: AudioStream
+@export var music_timer: Timer
 
 @export_subgroup("Settings")
 @export var speed: float = 150.00
@@ -68,3 +70,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_timer_timeout() -> void:
 	GameManager.player_can_take_damage = true
+
+
+func _on_music_timer_timeout() -> void:
+	SignalManager.emit_signal("play_sfx", ufo_sfx)

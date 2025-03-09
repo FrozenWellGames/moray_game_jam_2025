@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqndepomkv6ix"]
+
+[ext_resource type="Script" uid="uid://dpn3c51dlpkut" path="res://Characters/Player/player_laser.gd" id="1_dakk6"]
+[ext_resource type="AudioStream" uid="uid://cf16ry7tupnf1" path="res://SFX/player_hit.mp3" id="2_nl2ab"]
+[ext_resource type="Texture2D" uid="uid://chdi7f7h7f2mu" path="res://Characters/UFO/Assets/ufo_laser.png" id="2_ws1cg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nl2ab"]
+radius = 8.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ge2j6"]
+blend_mode = 1
+
+[node name="UFOLaser" type="Node2D"]
+script = ExtResource("1_dakk6")
+player_hit_sfx = ExtResource("2_nl2ab")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -5.96046e-08)
+scale = Vector2(0.8, 0.8)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_nl2ab")
+
+[node name="BeamLeft" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_ge2j6")
+scale = Vector2(2, 2)
+texture = ExtResource("2_ws1cg")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2cj3i1hfygjr"]
+
+[ext_resource type="Script" uid="uid://jgsle026r808" path="res://Characters/UFO/ufo_fire_component.gd" id="1_rp0yw"]
+[ext_resource type="PackedScene" uid="uid://bqndepomkv6ix" path="res://Characters/UFO/ufo_laser.tscn" id="2_qje7f"]
+[ext_resource type="AudioStream" uid="uid://bvtsex48jq2ef" path="res://SFX/player_laser.mp3" id="3_qsep2"]
+
+[node name="UFOFireComponent" type="Node" node_paths=PackedStringArray("firing_timer")]
+script = ExtResource("1_rp0yw")
+projectile = ExtResource("2_qje7f")
+firing_timer = NodePath("FiringTimer")
+ufo_laser_sfx = ExtResource("3_qsep2")
+
+[node name="FiringTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="FiringTimer" to="." method="_on_cooldown_timer_timeout"]

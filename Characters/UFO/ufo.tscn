@@ -1,13 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbpb1a0bfo7wf"]
+[gd_scene load_steps=15 format=3 uid="uid://cbpb1a0bfo7wf"]
 
 [ext_resource type="Script" uid="uid://pjlspdkb37ng" path="res://Characters/UFO/ufo.gd" id="1_5k3wy"]
 [ext_resource type="PackedScene" uid="uid://bqa5kticls4m0" path="res://Explosion/explosion.tscn" id="2_dhhv4"]
 [ext_resource type="AudioStream" uid="uid://cjyrl6gm82mnv" path="res://SFX/explosion.mp3" id="3_7pac1"]
 [ext_resource type="AudioStream" uid="uid://cf16ry7tupnf1" path="res://SFX/player_hit.mp3" id="4_1pww3"]
+[ext_resource type="AudioStream" uid="uid://col0sgdiwaffg" path="res://SFX/ufo_sfx.mp3" id="5_6xiqn"]
 [ext_resource type="Texture2D" uid="uid://nyl6h2n0mion" path="res://Characters/UFO/Assets/ufo.png" id="5_h1bke"]
+[ext_resource type="PackedScene" uid="uid://d2cj3i1hfygjr" path="res://Characters/UFO/ufo_fire_component.tscn" id="7_luj5c"]
 
 [sub_resource type="Animation" id="Animation_582lc"]
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -85,7 +88,7 @@ _data = {
 &"scale_up": SubResource("Animation_j1quy")
 }
 
-[node name="UFO" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer", "explosion_spawn_point_1", "explosion_spawn_point_2", "explosion_spawn_point_3", "player_immune_time") groups=["enemy"]]
+[node name="UFO" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer", "explosion_spawn_point_1", "explosion_spawn_point_2", "explosion_spawn_point_3", "player_immune_time", "music_timer") groups=["enemy"]]
 script = ExtResource("1_5k3wy")
 animation_player = NodePath("AnimationPlayer")
 scale_changer = NodePath("ScaleChanger")
@@ -96,6 +99,10 @@ explosion_spawn_point_3 = NodePath("ExplosionPoint3")
 player_immune_time = NodePath("Timer")
 explosion_sfx = ExtResource("3_7pac1")
 player_hit_sfx = ExtResource("4_1pww3")
+ufo_sfx = ExtResource("5_6xiqn")
+music_timer = NodePath("MusicTimer")
+
+[node name="UFOFirePoint" type="Marker2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-6, 0)
@@ -133,6 +140,14 @@ position = Vector2(-7.61, 10.82)
 wait_time = 0.5
 one_shot = true
 
+[node name="MusicTimer" type="Timer" parent="."]
+wait_time = 1.2
+autostart = true
+
+[node name="UFOFireComponent" parent="." node_paths=PackedStringArray("bullet_spawn_point") instance=ExtResource("7_luj5c")]
+bullet_spawn_point = NodePath("../UFOFirePoint")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MusicTimer" to="." method="_on_music_timer_timeout"]
