@@ -51,7 +51,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_1.global_position)
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_2.global_position)
 		SignalManager.emit_signal("spawn_effect", explosion, explosion_spawn_point_3.global_position)
-		SignalManager.emit_signal("add_to_score", 10)
+		SignalManager.emit_signal("add_to_score", 80)
 		SignalManager.emit_signal("play_sfx", explosion_sfx)
 		area.get_parent().queue_free()
 		self.queue_free()
