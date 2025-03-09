@@ -9,6 +9,7 @@ extends Node2D
 @export var explosion_spawn_point_3: Marker2D
 @export var player_immune_time: Timer
 @export var explosion_sfx : AudioStream
+@export var player_hit_sfx : AudioStream
 
 @export_subgroup("Settings")
 @export var speed: float = 100.00
@@ -66,6 +67,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" and GameManager.player_can_take_damage:
 		SignalManager.emit_signal("deduct_from_player_health", 1)
 		GameManager.player_can_take_damage = false
+		SignalManager.emit_signal("play_sfx",player_hit_sfx)
 		player_immune_time.start()
 
 

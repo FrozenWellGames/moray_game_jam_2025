@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://odjjnfn1ehsl"]
+[gd_scene load_steps=16 format=3 uid="uid://odjjnfn1ehsl"]
 
 [ext_resource type="Script" uid="uid://2jp4kl7cpy5r" path="res://Characters/Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://b23n3hqxfi6fi" path="res://Characters/Player/components/scenes/input_component.tscn" id="2_gwnis"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cfyp4c6wkxpnp" path="res://Characters/Player/Assets/player_engine_sheet.png" id="7_00tjw"]
 [ext_resource type="Texture2D" uid="uid://brk62xs487amp" path="res://Characters/Player/Assets/player.png" id="7_od3ui"]
 [ext_resource type="PackedScene" uid="uid://b08w165ei7b44" path="res://Characters/Player/components/animation_component.tscn" id="7_vtle1"]
+[ext_resource type="PackedScene" uid="uid://bbjx1x7oyg2a4" path="res://Characters/hit_flash_component.tscn" id="10_yhol4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bk3v5"]
 
@@ -92,6 +93,9 @@ player_laser_sfx = ExtResource("6_r5ew0")
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("player_sprite", "animation_player") instance=ExtResource("7_vtle1")]
 player_sprite = NodePath("../Ship")
 animation_player = NodePath("../AnimationPlayer")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_yhol4")]
+sprite = NodePath("../Ship")
 
 [node name="Engines" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_od3ui")

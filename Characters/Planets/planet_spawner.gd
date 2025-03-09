@@ -10,7 +10,6 @@ extends Node2D
 func on_spawn_asteroid( Rotation: float) -> void:
 	var planet_no: int = 1
 	for n in 4:
-		pass
 		var plan: Node2D = planet.instantiate()
 		plan.rotation = Rotation
 		plan.position = rotation_center.global_position
