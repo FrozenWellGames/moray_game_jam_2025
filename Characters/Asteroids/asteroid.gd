@@ -15,12 +15,11 @@ extends Node2D
 @export var speed: float = 150.00
 
 
-
-var angle: float = 0.0  # Current angle in radians
-var radius: float = 0.0  # Current radius from the center
-var angular_speed: float = 1.0  # Speed of angle change (radians per second)
-var radial_speed: float = 50.0  # Speed of radius increase (pixels per second)
-var center: Vector2  # Center of the screen
+var angle: float = 0.0 # Current angle in radians
+var radius: float = 0.0 # Current radius from the center
+var angular_speed: float = 1.0 # Speed of angle change (radians per second)
+var radial_speed: float = 50.0 # Speed of radius increase (pixels per second)
+var center: Vector2 # Center of the screen
 
 func _ready() -> void:
 	animation_player.play("asteroid")

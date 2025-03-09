@@ -2,7 +2,6 @@ class_name PlayerLaser
 extends Node2D
 
 
-
 @export_subgroup("nodes")
 @export var player_hit_sfx: AudioStream
 @export_subgroup("settings")

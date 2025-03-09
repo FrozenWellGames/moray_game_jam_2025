@@ -5,7 +5,7 @@ extends Node
 @export var projectile: PackedScene
 @export var cooldown_timer: Timer
 @export var bullet_spawn_point: Marker2D
-@export var player_laser_sfx : AudioStream
+@export var player_laser_sfx: AudioStream
 var is_firing: bool = false
 
 

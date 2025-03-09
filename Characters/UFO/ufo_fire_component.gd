@@ -5,7 +5,7 @@ extends Node
 @export var projectile: PackedScene
 @export var firing_timer: Timer
 @export var bullet_spawn_point: Marker2D
-@export var ufo_laser_sfx : AudioStream
+@export var ufo_laser_sfx: AudioStream
 
 
 func handle_fire() -> void:

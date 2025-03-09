@@ -54,5 +54,4 @@ func activate_player_can_take_damage() -> void:
 
 
 func _on_timer_timeout() -> void:
-	print("HELLO")
 	player_can_take_damage = true
