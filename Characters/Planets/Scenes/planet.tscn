@@ -85,7 +85,7 @@ _data = {
 &"scale_up": SubResource("Animation_yqxu4")
 }
 
-[node name="Planet" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer", "explosion_spawn_point_1", "explosion_spawn_point_2", "explosion_spawn_point_3", "player_immune_time")]
+[node name="Planet" type="Node2D" node_paths=PackedStringArray("animation_player", "scale_changer", "explosion_spawn_point_1", "explosion_spawn_point_2", "explosion_spawn_point_3", "player_immune_time", "player_sprite")]
 script = ExtResource("1_qh36m")
 animation_player = NodePath("AnimationPlayer")
 scale_changer = NodePath("ScaleChanger")
@@ -96,6 +96,7 @@ explosion_spawn_point_3 = NodePath("ExplosionPoint3")
 player_immune_time = NodePath("Timer")
 explosion_sfx = ExtResource("3_ckxtw")
 player_hit_sfx = ExtResource("4_nwuvu")
+player_sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1e-05, 1e-05)

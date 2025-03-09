@@ -9,9 +9,11 @@ extends Node2D
 
 func on_spawn_asteroid( Rotation: float) -> void:
 	var planet_no: int = 1
+	var rand = randi_range(1, 4)
 	for n in 4:
 		var plan: Node2D = planet.instantiate()
 		plan.rotation = Rotation
+		plan.random_sprite_value = rand
 		plan.position = rotation_center.global_position
 		plan.group_id = GameManager.current_planet_group_id
 		plan.position_in_group = planet_no

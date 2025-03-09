@@ -11,6 +11,8 @@ extends Node2D
 @export var explosion_sfx : AudioStream
 @export var player_hit_sfx : AudioStream
 
+@export var player_sprite : Sprite2D
+
 @export_subgroup("Settings")
 @export var speed: float = 100.00
 
@@ -19,9 +21,16 @@ var position_in_group:int
 
 var player_laser_group_id = 0
 var player_laser_position_in_group = 0
+var random_sprite_value = 1
 
 
 func _ready() -> void:
+	  
+	var texture_path = "res://Characters/Planets/Assets/planet_0" + str(random_sprite_value) + ".png"
+	player_sprite.texture = load(texture_path)
+	
+	
+	
 	animation_player.play("planet")
 	scale_changer.play("scale_up")
 	group_id = GameManager.current_planet_group_id
