@@ -5,7 +5,7 @@ extends Node
 @export var reactivate_player_damage_timer: Timer
 
 var score: int = 20
-var high_score: int = 0
+var high_score: int = 15440
 var player_health: int = 5
 var player_can_take_damage: bool = true
 
